@@ -1,0 +1,146 @@
+<!-- filepath: d:\Project - Main\project\app\templates\about.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - KeyFrame</title>
+    <style>
+        /* Reusing styles from index.html */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #f5efff;
+            --secondary-color: #7371fc;
+            --tertiary-color: #f17300;
+            --purple: rgba(191, 70, 255, 1);
+            --lightshadow: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: var(--primary-color);
+            color: black;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            box-shadow: 0 2px 5px var(--lightshadow);
+            padding: 1rem 0.5rem;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: black;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--tertiary-color);
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        h1, h2 {
+            color: var(--secondary-color);
+        }
+
+        .about-section {
+            margin: 2rem 0;
+        }
+
+        .about-section h2 {
+            margin-bottom: 1rem;
+        }
+
+        .about-section p {
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">KeyFrame</div>
+            <ul class="nav-links">
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'features' %}">Features</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>About KeyFrame</h1>
+        <div class="about-section">
+            <h2>Our Mission</h2>
+            <p>
+                KeyFrame is designed to simplify the process of extracting meaningful insights from YouTube videos. 
+                Our mission is to provide users with tools to analyze, summarize, and extract key points from video transcripts, 
+                making it easier to understand and utilize video content effectively.
+            </p>
+        </div>
+
+        <div class="about-section">
+            <h2>What We Do</h2>
+            <p>
+                We leverage advanced technologies such as natural language processing (NLP) and machine learning to process video transcripts. 
+                Our platform offers features like transcript neutralization, summarization, and key point extraction, 
+                enabling users to focus on the most important aspects of the content.
+            </p>
+        </div>
+
+        <div class="about-section">
+            <h2>Why Choose Us?</h2>
+            <p>
+                KeyFrame stands out for its user-friendly interface, fast processing, and accurate results. 
+                Whether you're a student, researcher, or professional, our platform is tailored to meet your needs 
+                by saving time and providing high-quality insights from video content.
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 KeyFrame - All Rights Reserved</p>
+    </footer>
+</body>
+</html>

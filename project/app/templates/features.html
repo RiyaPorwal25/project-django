@@ -1,0 +1,146 @@
+<!-- filepath: d:\Project - Main\project\app\templates\features.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features - KeyFrame</title>
+    <style>
+        /* Reusing styles from index.html */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #f5efff;
+            --secondary-color: #7371fc;
+            --tertiary-color: #f17300;
+            --purple: rgba(191, 70, 255, 1);
+            --lightshadow: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: var(--primary-color);
+            color: black;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            box-shadow: 0 2px 5px var(--lightshadow);
+            padding: 1rem 0.5rem;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: black;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--tertiary-color);
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        h1, h2 {
+            color: var(--secondary-color);
+        }
+
+        .feature-section {
+            margin: 2rem 0;
+        }
+
+        .feature-section h2 {
+            margin-bottom: 1rem;
+        }
+
+        .feature-section p {
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">KeyFrame</div>
+            <ul class="nav-links">
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'features' %}">Features</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Project Features</h1>
+        <div class="feature-section">
+            <h2>1. Notes</h2>
+            <p>
+                This feature removes subjective words such as pronouns (I, me, you, they, etc.) from the transcript to make the text more objective. 
+                By eliminating personal references, it helps in creating a more neutral and unbiased representation of the video content, 
+                which is useful for general analysis and summarization.
+            </p>
+        </div>
+
+        <div class="feature-section">
+            <h2>2. Summary</h2>
+            <p>
+                This feature uses Latent Semantic Analysis (LSA) to generate a concise version of the transcript. 
+                By analyzing the relationships between words and sentences, it extracts the most relevant content and reduces the transcript 
+                to two key sentences, making it easier to grasp the main idea of the video without going through the entire transcript.
+            </p>
+        </div>
+
+        <div class="feature-section">
+            <h2>3. Key Points</h2>
+            <p>
+                This feature utilizes spaCy to analyze the transcript and extract informative sentences. 
+                It ensures that only meaningful statements containing more than five words are retained, filtering out less important content. 
+                This helps in identifying the essential parts of the transcript while maintaining context and coherence.
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 KeyFrame - All Rights Reserved</p>
+    </footer>
+</body>
+</html>

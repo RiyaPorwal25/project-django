@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KeyFrame</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+<style>*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*::before, *::after{
+    padding: 0;
+    margin: 0;
+}
+
+:root{
+    --primary-color: #f5efff;
+    --secondary-color: #7371fc;
+    --tertiary-color: #f17300;
+    --purple: rgba(191, 70, 255, 1);
+    --lightshadow: rgba(0,0,0,0.1);
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--primary-color);
+    min-height: 100vh;
+    color: black;
+}
+
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header{
+    background-color: var(--primary-color);
+    box-shadow: 0 2px 5px var(--lightshadow);
+    padding: 1rem 0.5rem;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem 0.5rem 0;
+}
+
+.logo{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+.nav-links{
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a{
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    transition: color 0.3 ease;
+}
+
+.nav-links a:hover{
+    color: var(--tertiary-color);
+    font-weight: 600;
+}
+
+.hero{
+    text-align: center;
+    padding: 4rem 0;
+}
+
+.hero h1{
+    font-size: 3rem;
+    color: black;
+    margin-bottom: 1rem;
+}
+
+.hero h1 span{
+    color: var(--secondary-color);
+}
+
+.button{
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    width: 200px;
+    height: 60px;
+    font-size: 1.25rem;
+    padding: 15px 30px;
+    border: 0;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10rem;
+    transition: all 0.02s;
+    font-weight: bold;
+    cursor: pointer;
+    color: black;
+    z-index: 0;
+    box-shadow: 0 0px 7px -5px var(--lightshadow);
+}
+
+.button:hover{
+    background-color: var(--primary-color);
+    color: black;
+}
+
+.button:active{
+    transform: scale(0.97);
+}
+
+.hoverEffect{
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.hoverEffect div{
+    background-color: var(--tertiary-color);
+    background: linear-gradient(180deg, 
+    var(--purple)0%,
+    var(--secondary-color)49%,
+    var(--purple)100%);
+    border-radius: 40rem;
+    width: 15rem;
+    height: 15rem;
+    transition: 0.4s;
+    filter: blur(15px);
+    animation: effect infinite 3s linear;
+    opacity: 0.5;
+}
+
+.button:hover .hoverEffect div{
+    width: 10rem;
+    height: 10rem;
+}
+
+@keyframes effect{
+    0%{
+        transform: rotate(0deg);
+    }
+
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+.feature{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 4rem 0;
+}
+
+.feature-card{
+    background-color: var(--secondary-color);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px var(--lightshadow);
+    text-align: center;
+}
+.feature-card h3{
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.feature-card p{
+    color: white;
+}
+
+footer{
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 4rem;
+}
+
+/* Chat Button Styles */
+.chat-btn {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    padding: 10px 20px;
+    background-color: var(--secondary-color);
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.chat-btn:hover {
+    background-color: var(--tertiary-color);
+}
+
+/* Chat Section Styles */
+.chat-section {
+    position: fixed;
+    bottom: 40px;
+    right: 20px;
+    width: 300px;
+    height: 600px;
+    background-color: var(--primary-color);
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: var(--secondary-color);
+    color: white;
+    border-radius: 10px 10px 0 0;
+}
+
+.close-chat-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.chat-messages {
+    padding: 10px;
+    height: 490px;
+    overflow-y: auto;
+    border-bottom: 1px solid #ccc;
+}
+
+.chat-input-container {
+    display: flex;
+    padding: 10px;
+}
+
+.chat-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+}
+
+.chat-search-btn {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-left: none;
+    background-color: var(--primary-color);
+    cursor: pointer;
+    border-radius: 0 5px 5px 0;
+}
+
+.chat-search-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+}</style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">KeyFrame</div>
+            <ul class="nav-links">
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'features' %}">Features</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section class="hero">
+            <h1 class="name"><span>KeyFrame</span> - YouTube Video Summarizer</h1> <br><br>
+            <a href="{% url 'results' %}" class="button">Get Start
+                <div class="hoverEffect">
+                    <div></div>
+                </div>
+            </a>
+            <!-- From Uiverse.io by barisdogansutcu --> 
+            <!-- <button>Get Start</button> -->
+
+        </section>
+
+        <section class="feature">
+            <div class="feature-card">
+                <h3>Notes</h3>
+                <p>This feature removes subjective words such as pronouns (I, me, you, they, etc.) from the transcript to make the text more objective. By eliminating personal references, it helps in creating a more neutral and unbiased representation of the video content, which is useful for general analysis and summarization.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Summary</h3>
+                <p>This feature uses Latent Semantic Analysis (LSA) to generate a concise version of the transcript. By analyzing the relationships between words and sentences, it extracts the most relevant content and reduces the transcript to two key sentences, making it easier to grasp the main idea of the video without going through the entire transcript.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Key Points</h3>
+                <p>This feature utilizes spaCy to analyze the transcript and extract informative sentences. It ensures that only meaningful statements containing more than five words are retained, filtering out less important content. This helps in identifying the essential parts of the transcript while maintaining context and coherence.</p>
+            </div>
+        </section>
+    </div>
+    <footer>
+            <p>&copy; 2021 KeyFrame - All Rights Reserved</p>
+    </footer>
+</body>
+</html>

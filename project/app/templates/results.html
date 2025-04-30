@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KeyFrame</title>
+    <link rel="stylesheet" href="result style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    *::before, *::after{
+        padding: 0;
+        margin: 0;
+    }
+    
+    :root{
+        --primary-color: #f5efff;
+        --secondary-color: #7371fc;
+        --tertiary-color: #f17300;
+        --purple: rgba(191, 70, 255, 1);
+        --lightshadow: rgba(0,0,0,0.1);
+    }
+    
+    body{
+        margin: 0;
+        padding: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: var(--primary-color);
+        min-height: 100vh;
+        color: black;
+    }
+    
+    .container{
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+    
+    header{
+        background-color: var(--primary-color);
+        box-shadow: 0 2px 5px var(--lightshadow);
+        padding: 1rem 0.5rem;
+    }
+    
+    nav{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 2rem 0.5rem 0;
+    }
+    
+    .logo{
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--secondary-color);
+    }
+    
+    .nav-links{
+        list-style: none;
+        display: flex;
+        gap: 2rem;
+    }
+    
+    .nav-links a{
+        text-decoration: none;
+        color: black;
+        font-weight: 500;
+        transition: color 0.3 ease;
+    }
+    
+    .nav-links a:hover{
+        color: var(--tertiary-color);
+        font-weight: 600;
+    }
+    
+
+    .display {
+        width: 50%;
+        margin-top: 10px;
+        margin-left: 25%;
+        background-color: white;
+        color: #4f4f4f;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 15px;
+        border-radius: 5px;
+        box-shadow: 2px 2px var(--lightshadow);
+    }
+    
+    .display input{
+        border: 0;
+        outline: 0;
+        font-size: 15px;
+        flex: 1;
+    }
+    
+    .display:hover{
+        box-shadow: 0px 0px 4px 4px var(--lightshadw);
+    }
+    
+    .result {
+        display: flex;
+        overflow-x: auto;
+        padding: 2rem 0;
+        margin-top: 20px;
+    }
+    
+    .result-card {
+        background-color: var(--secondary-color);
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        margin-right: 2rem;
+        flex: 0 0 auto;
+        width: 350px;
+        height: 400px;
+        overflow-y: auto;
+    }
+    
+    .result-card h3 {
+        color: white;
+        margin-bottom: 1rem;
+    }
+    
+    .result-card p {
+        color: white;
+    }
+    
+    .result-card ul {
+        list-style-type: disc;
+        padding-left: 20px;
+        color: white;
+    }
+    
+    .result-card ul li {
+        margin-bottom: 0.5rem;
+    }
+    
+    footer {
+        background-color: #0f0f0f;
+        color: white;
+        text-align: center;
+        padding: 2rem 0;
+        margin-top: 4rem;
+    }
+    
+    /* Chat Button Styles */
+    .chat-btn {
+        position: fixed;
+        bottom: 40px;
+        right: 40px;
+        padding: 10px 20px;
+        background-color: var(--secondary-color);
+        color: white;
+        font-size: 15px;
+        font-weight: bold;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+    }
+    
+    .chat-btn:hover {
+        background-color: var(--tertiary-color);
+    }
+    
+    /* Chat Section Styles */
+    .chat-section {
+        position: fixed;
+        bottom: 40px;
+        right: 20px;
+        width: 300px;
+        height: 600px;
+        background-color: var(--primary-color);
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        display: none;
+    }
+    
+    .chat-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        background-color: var(--secondary-color);
+        color: white;
+        border-radius: 10px 10px 0 0;
+    }
+    
+    .close-chat-btn {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+    }
+    
+    .chat-messages {
+        padding: 10px;
+        height: 490px;
+        overflow-y: auto;
+        border-bottom: 1px solid #ccc;
+    }
+    
+    .chat-input-container {
+        display: flex;
+        padding: 10px;
+    }
+    
+    .chat-input {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px 0 0 5px;
+        outline: none;
+    }
+    
+    .chat-input-container i {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-left: none;
+        background-color: var(--primary-color);
+        cursor: pointer;
+        border-radius: 0 5px 5px 0;
+    }
+    
+    .chat-search-btn:hover {
+        background-color: var(--primary-color);
+        color: white;
+    }
+
+    .hero {
+        text-align: center;
+        padding: 4rem 0;
+    }
+    
+    {% comment %} .searchBox {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 2rem;
+        width: 100%;
+    }
+    
+    .searchInput {
+        padding: 1rem;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 500px;
+        margin-right: 1rem;
+    }
+    
+    .searchButton {
+        padding: 0.8rem 1.5rem;
+        margin-left: none;
+        background-color: var(--secondary-color);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    .searchButton:hover {
+        background-color: var(--tertiary-color);
+    } {% endcomment %}
+    .result-card-1 {
+        margin-top: 20px;
+        gap: 10rem;
+        display: flex;
+    }
+    result style.css */
+.searchBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.searchInput {
+    padding: 1rem;
+    font-size: 1rem;
+    border: 0.5px solid #ccc;
+    border-right: none; 
+    border-radius: 5px 0 0 5px; 
+    width: 500px;
+}
+
+.searchButton {
+    {% comment %} margin:0rem 0 0 0rem; {% endcomment %}
+    padding: 0.1rem 0.6rem 1rem 0.6rem;
+    {% comment %} padding:1rem 1.3rem; {% endcomment %}
+    background-color: var(--secondary-color);
+    color: white;
+    border: 1px solid #ccc;
+    border-left: none; 
+    border-radius: 0 5px 5px 0; 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.searchButton:hover {
+    background-color: var(--tertiary-color);
+}
+</style>
+<body>
+    <header>
+        <nav>
+            <div class="logo">KeyFrame</div>
+            <ul class="nav-links">
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'features' %}">Features</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section class="hero">
+            <div class="searchBox">
+                <form method="post" id="video-form" action="{% url 'results' %}">
+                    {% csrf_token %}
+                    <input class="searchInput" type="text" id="video_url" name="video_url" placeholder="Paste Youtube Link" required>
+                    <button class="searchButton" href="#" type="submit" width="29" height="29">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="29" height="30" viewBox="0 -5 29 29" fill="none">
+                            <g clip-path="url(#clip0_2_17)">
+                                <g filter="url(#filter0_d_2_17)">
+                                    <path d="M23.7953 23.9182L19.0585 19.1814M19.0585 19.1814C19.8188 18.4211 20.4219 17.5185 20.8333 16.5251C21.2448 15.5318 21.4566 14.4671 21.4566 13.3919C21.4566 12.3167 21.2448 11.252 20.8333 10.2587C20.4219 9.2653 19.8188 8.36271 19.0585 7.60242C18.2982 6.84214 17.3956 6.23905 16.4022 5.82759C15.4089 5.41612 14.3442 5.20435 13.269 5.20435C12.1938 5.20435 11.1291 5.41612 10.1358 5.82759C9.1424 6.23905 8.23981 6.84214 7.47953 7.60242C5.94407 9.13789 5.08145 11.2204 5.08145 13.3919C5.08145 15.5634 5.94407 17.6459 7.47953 19.1814C9.01499 20.7168 11.0975 21.5794 13.269 21.5794C15.4405 21.5794 17.523 20.7168 19.0585 19.1814Z" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" shape-rendering="crispEdges"></path>
+                                </g>
+                            </g>
+                            <defs>
+                                <filter id="filter0_d_2_17" x="-0.418549" y="3.70435" width="29.7139" height="29.7139" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                    <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix>
+                                    <feOffset dy="4"></feOffset>
+                                    <feGaussianBlur stdDeviation="2"></feGaussianBlur>
+                                    <feComposite in2="hardAlpha" operator="out"></feComposite>
+                                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"></feColorMatrix>
+                                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_2_17"></feBlend>
+                                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2_17" result="shape"></feBlend>
+                                </filter>
+                                <clipPath id="clip0_2_17">
+                                    <rect width="28.0702" height="28.0702" fill="white" transform="translate(0.403503 0.526367)"></rect>
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </button>
+                </form>
+            </div>  
+        </section>
+        <section class="result">
+            {% if error %}
+                <div class="result-card">
+                    <h3>Error</h3>
+                    <p style="text-align: justify;">{{ error|capfirst }}</p>
+                </div>
+            {% else %}
+                <div class="result-card">
+                    <h3>Notes</h3>
+                    <p style="text-align: justify;">{{ notes|capfirst }}</p>
+                </div>
+                <div class="result-card">
+                    <h3>Summary</h3>
+                    <p style="text-align: justify;">{{ summary|capfirst }}</p>
+                </div>
+                <div class="result-card">
+                    <h3>Key Points</h3>
+                    <ul style="text-align: justify; list-style-type: disc; color: white;">
+                        {% for point in key_points %}
+                            <li>{{ point|capfirst }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+        </section>
+        <div class="result-card-1">
+            <form method="post" action="{% url 'generate_word_file' %}">
+                {% csrf_token %}
+                <input type="hidden" name="text" value="{{ notes }}">
+                <button type="submit" class="searchButton">Download Notes as Word</button>
+            </form>
+            <form method="post" action="{% url 'generate_word_file' %}">
+                {% csrf_token %}
+                <input type="hidden" name="text" value="{{ summary }}">
+                <button type="submit" class="searchButton">Download Summary as Word</button>
+            </form>
+        </div>
+    </div>
+            {% endif %}
+    <footer>
+        <p>&copy; 2024 Your Company. All rights reserved.</p>
+    </footer>
+
+    <script>
+
+    </script>
+</body>
+</html>
