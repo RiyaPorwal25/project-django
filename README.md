@@ -48,8 +48,8 @@ Make sure you have the following installed:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/TanishArya/django-project.git
-   cd django-project
+   git clone https://github.com/RiyaPorwal25/project-django.git
+   cd project-django
    ```
 
 2. Set up a virtual environment:
@@ -110,7 +110,7 @@ This project does not currently have a license. All rights reserved by the repos
 
 For any inquiries, reach out to the repository owner:
 
-- **GitHub Profile**: [TanishArya](https://github.com/TanishArya)
+- **GitHub Profile**: [Riya porwal](https://github.com/RiyaPorwal25)
 
 ---
 
